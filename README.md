@@ -6,9 +6,11 @@ Simulation de combat avec Excel pour le cours CVJ1102 - Mathématique pour le je
 ## Excel
 
 **Feuille Simulation:**
+
 roule une seule simulation avec les valeurs initiales de Vigueur et d'Agilité inscrit par l'utilisateur.
 
- **Feuille Preuve24Tours:**
+**Feuille Preuve24Tours:**
+
 preuve d'un résultat possible de 24 tours dans une seule simulation. 
 
 
