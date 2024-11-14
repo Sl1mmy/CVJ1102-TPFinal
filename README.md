@@ -49,7 +49,7 @@ Fin du programme.
 recherches les meilleures valeurs pour `agilite` et `vigueur`.
 
 exemple de résultat avec la range de toutes les valeurs possibles et une incrémentation de 1:
-```
+```python
 Meilleure combinaison pour le nombre moyen de tours le plus élevé :
 Joueur 1 : Agilité 11, Vigueur 79
 Joueur 2 : Agilité 12, Vigueur 78
