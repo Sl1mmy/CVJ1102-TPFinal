@@ -66,7 +66,7 @@ class Fight:
         self.calculate_agilite(self.moyenne, self.ecart_type)
         self.calculate_impact()
 
-        difference = abs(self.joueur1.impact - self.joueur2.impact)
+        difference = abs(self.joueur1.impact - self.joueur2.impact) * 0.2
         if(self.joueur1.impact > self.joueur2.impact):
             self.joueur1.vigueur += difference
             self.joueur2.vigueur -= difference

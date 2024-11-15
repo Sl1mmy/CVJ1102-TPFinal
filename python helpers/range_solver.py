@@ -66,7 +66,7 @@ class Fight:
         self.calculate_agilite(self.moyenne, self.ecart_type)
         self.calculate_impact()
 
-        difference = abs(self.joueur1.impact - self.joueur2.impact)
+        difference = abs(self.joueur1.impact - self.joueur2.impact) * 0.2
         if(self.joueur1.impact > self.joueur2.impact):
             self.joueur1.vigueur += difference
             self.joueur2.vigueur -= difference
@@ -94,8 +94,12 @@ def main():
 
     best_stats = (None, None)
 
-    #agilite_values = np.arange(10, 20.5, 0.01)   # Set Range
-    agilite_values = np.arange(10, 91, 1)
+    # New variable to track the first iteration where no turns are less than 13
+    iteration_all_turns_min_13 = None
+
+    # agilite_values range setup
+    #agilite_values = np.arange(10, 91, 0.1)
+    agilite_values = np.arange(10, 20.5, 0.01)   # Set Range
 
     for agilite1 in agilite_values:
         vigueur1 = 90 - agilite1
@@ -118,7 +122,11 @@ def main():
                     best_joueur1_random_values = j1_random_vals
                     best_joueur2_random_values = j2_random_vals
 
-            
+                # Check if all turns in this iteration are >= 13
+                if iteration_all_turns_min_13 is None and all(t >= 15 for t in turns):
+                    iteration_all_turns_min_13 = (stats1, stats2)
+                    #print(f"First iteration where all turns are >= 13 found: {iteration_all_turns_min_13}")
+
             avg_turns = np.average(turns)
             print(f"Stats J1: {stats1}, Stats J2: {stats2} -> Avg Turns: {avg_turns}")
 
@@ -136,13 +144,18 @@ def main():
     print(f"\nNombre de tours le plus élevé dans une seule simulation : {max_single_turns}")
     print(f"Joueur 1 : Agilité {max_single_turns_stats[0][0]}, Vigueur {max_single_turns_stats[0][1]}")
     print(f"Joueur 2 : Agilité {max_single_turns_stats[1][0]}, Vigueur {max_single_turns_stats[1][1]}")
-
+    
     print("\nValeurs aléatoires pour le meilleur combat (Joueur 1) :")
     print(best_joueur1_random_values)
     print("\nValeurs aléatoires pour le meilleur combat (Joueur 2) :")
     print(best_joueur2_random_values)
 
-
+    if iteration_all_turns_min_13:
+        print(f"\nPremière itération où tous les tours sont >= 13 :")
+        print(f"Joueur 1 : Agilité {iteration_all_turns_min_13[0][0]}, Vigueur {iteration_all_turns_min_13[0][1]}")
+        print(f"Joueur 2 : Agilité {iteration_all_turns_min_13[1][0]}, Vigueur {iteration_all_turns_min_13[1][1]}")
+    else:
+        print("\nAucune itération n'a eu tous les tours >= 13.")
 
 if __name__ == "__main__":
     quit(main())
