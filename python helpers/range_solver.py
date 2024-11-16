@@ -1,5 +1,5 @@
 import numpy as np
-from fight import Fight
+from base import Fight
     
 def main():
     nb_iterations = 100

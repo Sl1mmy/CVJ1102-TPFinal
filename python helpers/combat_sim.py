@@ -1,5 +1,5 @@
 from numpy import average
-from fight import Fight
+from base import Fight
 
 def main():
     while True:
